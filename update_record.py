@@ -1,40 +1,45 @@
-from tkinter import*
+from tkinter import *
 from tkinter import messagebox
 import mysql.connector
 
-update= mysql.connector.connect(
+update = mysql.connector.connect(
     host="localhost",
     user="root",
     password="",
     database="login"
 )
 
-root=Tk()
+root = Tk()
 root.title("Update Record")
 root.geometry("400x300")
 
 def updaterecord():
-    query="UPDATE STUDENT SET NAME'"+txtname.get()+"' WHERE EMAIL='"+txtemail.get()+"' where pass="+txtpass.get()+""
-    cursor=update.cursor()
+    id = txtid.get()
+    email = txtemail.get()
+    password = txtpass.get()
+    cur = update.cursor()
+    query="UPDATE form SET email=%s, password=%s WHERE id=%s"
+    cur.execute(query,(email,password, id))
     update.commit()
-    messagebox.showinfo("SUCCESS","Update")
-    
-lblname=Label(root,text="Name",font=("times new roman",20))
-lblname.pack()
-txtname=Entry(root)
-txtname.pack()
+    messagebox.showinfo("success","Record updated")
 
-lblemail=Label(root,text="Email",font=("times new roman",20))
+
+lblid = Label(root, text="id", font=("times new roman", 20))
+lblid.pack()
+txtid = Entry(root)
+txtid.pack()
+
+lblemail = Label(root, text="Email", font=("times new roman", 20))
 lblemail.pack()
-txtemail=Entry(root)
+txtemail = Entry(root)
 txtemail.pack()
 
-lblpass=Label(root,text="Password",font=("times new roman",20))
+lblpass = Label(root, text="Password", font=("times new roman", 20))
 lblpass.pack()
-txtpass=Entry()
-txtpass.pack()   
+txtpass = Entry(root, show="*")  
+txtpass.pack()
 
-btn=Button(text="Update",bg="green",fg="black",font="arial")
+btn = Button(root, text="Update", bg="green", fg="black", font="arial", command=updaterecord)
 btn.pack()
 
-root.mainloop() 
+root.mainloop()
