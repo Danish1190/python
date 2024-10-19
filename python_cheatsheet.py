@@ -735,7 +735,7 @@ print(gen_to_list)'''
 
 
 #         Handle Exception
-
+'''
 try:
     
     raise IndexError("This is an index error")
@@ -744,5 +744,5 @@ except IndexError as e:
 else:
     print("all good!")
 finally:
-    print("We clean up resource here")                 
+    print("We clean up resource here")'''                 
 
