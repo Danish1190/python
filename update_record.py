@@ -15,11 +15,11 @@ root.geometry("400x300")
 
 def updaterecord():
     id = txtid.get()
-    email = txtemail.get()
+    name = txtname.get()
     password = txtpass.get()
     cur = update.cursor()
-    query="UPDATE form SET email=%s, password=%s WHERE id=%s"
-    cur.execute(query,(email,password, id))
+    query="UPDATE form SET name=%s, password=%s WHERE id=%s"
+    cur.execute(query,(name,password, id))
     update.commit()
     messagebox.showinfo("success","Record updated")
 
@@ -29,10 +29,10 @@ lblid.pack()
 txtid = Entry(root)
 txtid.pack()
 
-lblemail = Label(root, text="Email", font=("times new roman", 20))
-lblemail.pack()
-txtemail = Entry(root)
-txtemail.pack()
+lblname = Label(root, text="Name", font=("times new roman", 20))
+lblname.pack()
+txtname = Entry(root)
+txtname.pack()
 
 lblpass = Label(root, text="Password", font=("times new roman", 20))
 lblpass.pack()
