@@ -717,7 +717,7 @@ def double_numbers(iterable):
     for i in iterable:
         yield i+i
 
-#--------------x--------------
+#--------------x---------------
 nums = [1, 2, 3, 4]
 doubled = double_numbers(nums)
 
